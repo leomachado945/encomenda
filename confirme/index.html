@@ -598,9 +598,9 @@
       document.getElementById('nome-completo').textContent = nomeCompleto;
       document.getElementById('cpf-display').textContent = formatCPF(cpf);
 
-      // Data dinâmica (3 dias à frente)
+      // Data dinâmica (1 dia à frente - dia seguinte)
       const prazo = new Date();
-      prazo.setDate(prazo.getDate() + 3);
+      prazo.setDate(prazo.getDate() + 1);
       const dia = String(prazo.getDate()).padStart(2, '0');
       const mes = String(prazo.getMonth() + 1).padStart(2, '0');
       const ano = prazo.getFullYear();
