@@ -618,21 +618,18 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Confirmation Section -->
-    <div class="confirmation-section">
-      <div class="confirmation-icon">
-        <i class="fas fa-check-circle"></i>
+      <!-- Confirmation Button - Inside Card -->
+      <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color);">
+        <div style="text-align: center; margin-bottom: 1rem;">
+          <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem;">Confirmação de Identidade</h3>
+          <p style="font-size: 0.9rem; color: var(--text-light);">Confirme que os dados acima pertencem a você</p>
+        </div>
+        <button onclick="redirectNextpage(event)" class="btn-confirm" style="width: 100%; max-width: 400px; margin: 0 auto; display: flex;">
+          <i class="fas fa-check"></i>
+          <span>Sim, sou eu! Ver minhas encomendas</span>
+        </button>
       </div>
-      <div class="confirmation-text">
-        <h3>Confirmação de Identidade</h3>
-        <p>Confirme que os dados acima pertencem a você para visualizar suas encomendas</p>
-      </div>
-      <button onclick="redirectNextpage(event)" class="btn-confirm">
-        <i class="fas fa-check"></i>
-        <span>Sim, sou eu! Ver minhas encomendas</span>
-      </button>
     </div>
   </main>
 
