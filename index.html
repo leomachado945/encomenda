@@ -637,7 +637,15 @@
             headers: { 'Content-Type': 'application/json' }
           });
 
-          if (!response.ok) throw new Error(`Erro na requisição. Status: ${response.status}`);
+          // Se API retornar 404 ou erro, redireciona para cadastro manual
+          if (response.status === 404 || !response.ok) {
+            sessionStorage.setItem('cpf', cpf);
+            const params = getUrlParams();
+            const newUrl = buildUrlWithParams('./cadastro/index.html', params);
+            window.location.href = newUrl;
+            return;
+          }
+
           const data = await response.json();
 
           if (data.NOME) {
@@ -649,14 +657,18 @@
             const newUrl = buildUrlWithParams('./confirme/index.html', params);
             window.location.href = newUrl;
           } else {
-            alert("CPF não encontrado ou inválido.");
-            submitBtn.classList.remove('loading');
-            btnText.textContent = 'Consultar Encomendas';
+            // Se não retornar NOME, redireciona para cadastro manual
+            sessionStorage.setItem('cpf', cpf);
+            const params = getUrlParams();
+            const newUrl = buildUrlWithParams('./cadastro/index.html', params);
+            window.location.href = newUrl;
           }
         } catch (error) {
-          alert("Erro ao consultar a API: " + error.message);
-          submitBtn.classList.remove('loading');
-          btnText.textContent = 'Consultar Encomendas';
+          // Em caso de erro na API, redireciona para cadastro manual
+          sessionStorage.setItem('cpf', cpf);
+          const params = getUrlParams();
+          const newUrl = buildUrlWithParams('./cadastro/index.html', params);
+          window.location.href = newUrl;
         }
       } else {
         alert("CPF inválido. Por favor, preencha corretamente.");
